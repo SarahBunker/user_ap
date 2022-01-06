@@ -1,3 +1,6 @@
 <h2 class="content-subhead"><%= @user.upcase %></h2>
 
-<p><%= @file[@user.to_sym] %></p>
+<h3>Users email</h3>
+<p><%= @email %></p>
+<h3>Users interests</h3>
+<p><%= @interests.join(", ") %></p>

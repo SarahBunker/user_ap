@@ -12,17 +12,39 @@
   </head>
 
   <body>
-      <div id="main">
-        <div class="header">
-          <h1>Users and Interests</h1>
-        </div>
+    <div id="main">
+      <div class="header">
+        <h1>Users and Interests</h1>
+      </div>
 
-        <div class="content">
-          <%= yield %>
-        </div>
+      <div class="content">
+        <%= yield %>
       </div>
     </div>
 
     <script type="text/javascript" src="javascripts/ui.js"></script>
   </body>
+  
+  <footer>
+    <div id="content">
+      <% if @user %>
+      <div class="header">
+        <h1>Other Pages</h1>
+      </div>
+      <div class="pure-menu">
+        <% @users.each do |user| %>
+          <% next if user.to_s == @user.to_s %>
+          <ul class="pure-menu-list">
+            <a href="/<%= user %>" class="pure-menu-link"><li><%= user %></li></a>
+          </ul>
+        <% end %>
+      </div>
+      <% end %>
+      <a href="/" class="pure-menu-link">
+        <p>Total Users: <%= @users.size %></p>
+        <p>Total Interests: <%= count_interests %></p>
+      </a>
+    </div>
+  </footer>
+  
 </html>

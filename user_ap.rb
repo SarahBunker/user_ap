@@ -8,6 +8,12 @@ before do
   @users = @file.keys
 end
 
+helpers do
+  def count_interests
+    @file.map { |_, info| info[:interests] }.flatten.size
+  end
+end
+
 get "/" do
   @title = "Users and Interests"
   
@@ -16,6 +22,9 @@ end
 
 get '/:user' do
   @user = params[:user]
+  @info = @file[@user.to_sym]
+  @email = @info[:email]
+  @interests = @info[:interests]
   
   redirect "/" unless @users.include?(@user.to_sym)
   
