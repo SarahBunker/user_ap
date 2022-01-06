@@ -1,0 +1,11 @@
+<h2 class="content-subhead">Users</h2>
+
+<div class="pure-menu">
+  <ul class="pure-menu-list">
+    <% @file.each do |user, info| %>
+      <a href="/<%= user %>" class="pure-menu-link"><li><%= user %></li></a>
+    <% end %>
+  </ul>
+  <p>Total Users: <%= @file.size %></p>
+  <p>Users: <%= @users %></p>
+</div>
